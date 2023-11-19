@@ -1,6 +1,17 @@
 <%- include('./partials/header.ejs') %>
 
-<p>Page des tableaux !!</p>
+<% for( let a = 0; a < allArrays.length; a++ ) { %>
 
+    
+    <% if(a % 2 === 0) { %>
+        <article class="img-Left">
+            <% } else { %>
+                <article class="img-right">
+                    <% } %>
+                    <img src="<%= allArrays[a].url_img %>" alt="toile personalisée">
+                    <p><%= allArrays[a].description %></p>
+                </article>
+                
+    <% } %>
 
 <%- include('./partials/footer.ejs') %>

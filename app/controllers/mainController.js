@@ -1,4 +1,4 @@
-
+const arrays = require('../../tableaux.json')
 
 const mainController = {
     homePage: (request, response) => {
@@ -7,17 +7,22 @@ const mainController = {
     },
 
     arrays: (request, response) => {
+        const allArrays = arrays;
 
-        response.render('arrays.ejs')
+            console.log(allArrays)
+        
+
+        response.render('arrays.ejs', {allArrays})
     },
 
     contact: (request, response) => {
+        
 
         response.render('contact.ejs')
     },
 
     array: (request, response) => {
-
+        
         response.render('array.ejs')
     }
 
