@@ -2,12 +2,10 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const router = require('./app/router.js');
-const path = require('path');
 const PORT = process.env.PORT
 
-
 app.set("view engine", "ejs");
-app.set('views', path.join(__dirname, 'views'));
+app.set('views','./app/views');
 
 app.use(express.static('integration'));
 
