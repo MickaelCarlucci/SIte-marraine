@@ -15,7 +15,9 @@
 <div class="div__img__home">
     <img class="img__expo" src="<%= randomUrl %>" alt="peinture personnalisée">
     <%
+    //ajoute une seconde variable pour exploiter la fonction de mon controleur qui genere des images aléatoires
     let randomUrl2;
+    // utilise un do ... while pour indiquer a ma cette variable que tant que l'url est identique a la premiere, il faut en generer une autre
     do {
         randomUrl2 = getRandomUrl();
     } while (randomUrl2 === randomUrl);
