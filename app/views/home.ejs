@@ -13,8 +13,15 @@
 </article>
 
 <div class="div__img__home">
-    <img class="img__expo" src="https://img.freepik.com/photos-gratuite/abstrait-colore-splash-3d-fond-generatif-fond-ai_60438-2509.jpg?size=626&ext=jpg" alt="peinture personnalisée">
-    <img class="img__expo" src="https://img.freepik.com/photos-premium/peinture-deux-femmes-dans-champ-fleurs-parapluie-ai-generatif_958192-1727.jpg?size=626&ext=jpg" alt="peinture personnalisée">
+    <img class="img__expo" src="<%= randomUrl %>" alt="peinture personnalisée">
+    <%
+    let randomUrl2;
+    do {
+        randomUrl2 = getRandomUrl();
+    } while (randomUrl2 === randomUrl);
+    %>
+    <img class="img__expo" src="<%= randomUrl2 %>" alt="peinture personnalisée">
 </div>
+
 
 <%- include('./partials/footer.ejs') %>
