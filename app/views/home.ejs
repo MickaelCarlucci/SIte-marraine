@@ -26,4 +26,18 @@
 </div>
 
 
+<% for( let a = 0; a < allArrays.length; a++ ) { %>
+
+    
+    <% if(a % 2 === 0) { %>
+        <article id="tableaux" class="img-Left">
+            <% } else { %>
+                <article class="img-right">
+                    <% } %>
+                    <img class="allArray" src="<%= allArrays[a].url_img %>" alt="toile personalisée">
+                    <p><%= allArrays[a].description %></p>
+                </article>
+                
+    <% } %>
+
 <%- include('./partials/footer.ejs') %>

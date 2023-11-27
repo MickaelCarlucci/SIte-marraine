@@ -13,20 +13,22 @@ const mainController = {
         }
             // crée une premiere variable qui exploite la fonction et l'envoie a la view pour exploiter sur une seconde variable
             const randomUrl = getRandomUrl();
+                    // récupere le tableau d'objet du fichier json
+        const allArrays = arrays; 
             
     
-        response.render('home.ejs', { randomUrl,  getRandomUrl });
+        response.render('home.ejs', { randomUrl,  getRandomUrl, allArrays });
     },
     
     
 
-    //page de tous les tableaux avec boucle dans la page ejs a partir du json
+   /* //page de tous les tableaux avec boucle dans la page ejs a partir du json
     arrays: (request, response) => {
         // récupere le tableau d'objet du fichier json
         const allArrays = arrays;  
 
         response.render('arrays.ejs', { allArrays })
-    },
+    },*/
 
     contact: (request, response) => {
         
