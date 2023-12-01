@@ -1,15 +1,15 @@
 const adminController = {
-    admin: (request, response) => {
+  admin: (request, response) => {
 
-        response.render('adminPage.ejs')
-    },
+    response.render('adminPage.ejs');
+  },
 
-    adminMail: (request, response) => {
+  adminMail: (request, response) => {
 
-        response.render('adminMessage.ejs')
-    }
+    response.render('adminMessage.ejs');
+  }
 
 
-}
+};
 
-module.exports = adminController
+module.exports = adminController;

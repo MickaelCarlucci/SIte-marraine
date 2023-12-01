@@ -12,9 +12,9 @@ app.use(express.static('app/integration'));
 app.use(router);
 
 app.use((request, response) => {
-    response.status(404).render("404")
+  response.status(404).render("404");
 });
 
 app.listen(PORT, () => {
-    console.log(`Listening on ${PORT}`)
-})
+  console.log(`Listening on ${PORT}`);
+});
