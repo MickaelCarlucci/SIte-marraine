@@ -1,43 +1,58 @@
 <%- include('./partials/header.ejs') %>
+    <div>
+        <article id="accueil">
+            <h2>Bienvenue dans mon expo !</h2>
 
-<article>
-    <h2>Bienvenue dans mon expo !</h2>
+            <p>Bienvenue sur mon espace artistique ! Je m'appelle Patricia, et ma passion pour la peinture a été
+                transmise
+                par mon père. Mon art s'exprime à travers une variété de toiles, où je suis capable de m'ajuster à
+                différents styles artistiques.
 
-    <p>Bienvenue sur mon espace artistique ! Je m'appelle Patricia, et ma passion pour la peinture a été transmise par mon père. Mon art s'exprime à travers une variété de toiles, où je suis capable de m'ajuster à différents styles artistiques.
+                Que vous souhaitiez un portrait saisissant, un paysage envoûtant ou une toile captivante sur un thème
+                spécifique, je suis là pour donner vie à vos idées. Bien que j'apprécie travailler avec un modèle, je
+                suis
+                également en mesure de créer des œuvres sur mesure, adaptées à vos besoins et à votre vision artistique.
 
-        Que vous souhaitiez un portrait saisissant, un paysage envoûtant ou une toile captivante sur un thème spécifique, je suis là pour donner vie à vos idées. Bien que j'apprécie travailler avec un modèle, je suis également en mesure de créer des œuvres sur mesure, adaptées à vos besoins et à votre vision artistique.
-        
-        Offrir ou recevoir une toile personnalisée est un geste unique et significatif. Si vous recherchez le cadeau parfait ou souhaitez simplement embellir votre espace avec une œuvre exclusive, n'hésitez pas à <a href="/contact">me contacter</a>. Ensemble, nous pouvons donner vie à vos inspirations artistiques.
-    </p>
+                Offrir ou recevoir une toile personnalisée est un geste unique et significatif. Si vous recherchez le
+                cadeau
+                parfait ou souhaitez simplement embellir votre espace avec une œuvre exclusive, n'hésitez pas à <a
+                    href="/contact">me contacter</a>. Ensemble, nous pouvons donner vie à vos inspirations artistiques.
+            </p>
 
-</article>
+        </article>
+    </div>
 
-<div class="div__img__home">
-    <img class="img__expo" src="<%= randomUrl %>" alt="peinture personnalisée">
-    <%
-    //ajoute une seconde variable pour exploiter la fonction de mon controleur qui genere des images aléatoires
-    let randomUrl2;
-    // utilise un do ... while pour indiquer a ma cette variable que tant que l'url est identique a la premiere, il faut en generer une autre
-    do {
-        randomUrl2 = getRandomUrl();
-    } while (randomUrl2 === randomUrl);
-    %>
-    <img class="img__expo" src="<%= randomUrl2 %>" alt="peinture personnalisée">
-</div>
+    <div class="div__img__home">
+        <div class="50">
+            <img class="img__expo" src="<%= randomUrl %>" alt="peinture personnalisée">
+        </div>
+        <div class="50">
+            <% //ajoute une seconde variable pour exploiter la fonction de mon controleur qui genere des images aléatoires 
+            let randomUrl2; // utilise un do ... while pour indiquer a ma cette variable que tant que
+                //l'url est identique a la premiere, il faut en generer une autre 
+                do { 
+                    randomUrl2=getRandomUrl(); 
+                } while (randomUrl2===randomUrl); 
+            %>
+                <img class="img__expo" src="<%= randomUrl2 %>" alt="peinture personnalisée">
+        </div>
+    </div>
 
 
-<% for( let a = 0; a < allArrays.length; a++ ) { %>
+    <% for( let a=0; a < allArrays.length; a++ ) { %>
 
-    
-    <% if(a % 2 === 0) { %>
-        <article id="tableaux" class="img-Left">
-            <% } else { %>
-                <article class="img-right">
+
+        <% if(a % 2===0) { %>
+            <article id="tableaux" class="img-Left">
+                <% } else { %>
+                    <article class="img-right">
+                        <% } %>
+                            <img class="allArray" src="<%= allArrays[a].url_img %>" alt="toile personalisée">
+                            <p>
+                                <%= allArrays[a].description %>
+                            </p>
+                    </article>
+
                     <% } %>
-                    <img class="allArray" src="<%= allArrays[a].url_img %>" alt="toile personalisée">
-                    <p><%= allArrays[a].description %></p>
-                </article>
-                
-    <% } %>
 
-<%- include('./partials/footer.ejs') %>
+ <%- include('./partials/footer.ejs') %>
