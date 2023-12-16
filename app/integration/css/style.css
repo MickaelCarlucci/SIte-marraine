@@ -1,30 +1,30 @@
 body {
-    text-align: center;
-    font-family: 'ephesis', serif;
-    font-size: 2rem;
-    background-color: rgba(141, 10, 10, 0.953);
-    color: #ffffff;
-    margin: 0% 12% 0% 12%;
-    height: 100vh;
+  text-align: center;
+  font-family: 'ephesis', serif;
+  font-size: 2rem;
+  background-color: rgba(141, 10, 10, 0.953);
+  color: #ffffff;
+  margin: 0% 12% 0% 12%;
+  height: 100vh;
 }
 
 h1 {
-   font-size: 4rem;
-   font-weight: bolder;
-   text-shadow: 5px 1px 2px rgb(16, 3, 5);
-   
+  font-size: 4rem;
+  font-weight: bolder;
+  text-shadow: 5px 1px 2px rgb(16, 3, 5);
+
 }
 
 a {
   text-decoration: none;
-  color: #c1a4a4;
-  text-shadow: 10px 2px 2px rgb(16, 3, 5);
+  color: #247f9d;
+  text-decoration: underline;
 }
 
 
 .navBar {
   display: flex;
-  justify-content:space-around;
+  justify-content: space-around;
   flex-direction: column;
   background-size: cover;
   background-position: center;
@@ -39,83 +39,150 @@ a {
   position: fixed;
   top: 10px;
   left: 20px;
-  
+
 }
 
 .btn-menu {
-    --clr-font-main: hsla(0 0% 20% / 100);
-    --btn-bg-1: rgb(255, 97, 97);
-    --btn-bg-2: rgb(61, 2, 2);
-    --btn-bg-color: hsla(360 100% 100% / 1);
-    --radii: 0.5em;
-    cursor: pointer;
-    padding: 0.9em 1.4em;
-    min-width: 120px;
-    min-height: 44px;
-    font-size: var(--size, 1rem);
-    font-weight: 500;
-    transition: 0.8s;
-    background-size: 280% auto;
-    background-image: linear-gradient(325deg, var(--btn-bg-2) 0%, var(--btn-bg-1) 55%, var(--btn-bg-2) 90%);
-    border: none;
-    border-radius: var(--radii);
-    color: var(--btn-bg-color);
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5), 0px 5px 5px -1px rgba(27, 1, 1, 0.25), inset 4px 4px 8px rgba(135, 16, 16, 0.5), inset -4px -4px 8px rgba(19, 95, 216, 0.35);
-  }
-  
-  .btn-menu:hover {
-    background-position: right top;
-  }
-  
-  .btn-menu:is(:focus, :focus-visible, :active) {
-    outline: none;
-    box-shadow: 0 0 0 3px var(--btn-bg-color), 0 0 0 6px var(--btn-bg-2);
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .btn-menu {
-      transition: linear;
-    }
-  }
+  --clr-font-main: hsla(0 0% 20% / 100);
+  --btn-bg-1: rgb(255, 97, 97);
+  --btn-bg-2: rgb(61, 2, 2);
+  --btn-bg-color: hsla(360 100% 100% / 1);
+  --radii: 0.5em;
+  cursor: pointer;
+  padding: 0.9em 1.4em;
+  min-width: 120px;
+  min-height: 44px;
+  font-size: var(--size, 1rem);
+  font-weight: 500;
+  transition: 0.8s;
+  background-size: 280% auto;
+  background-image: linear-gradient(325deg, var(--btn-bg-2) 0%, var(--btn-bg-1) 55%, var(--btn-bg-2) 90%);
+  border: none;
+  border-radius: var(--radii);
+  color: var(--btn-bg-color);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5), 0px 5px 5px -1px rgba(27, 1, 1, 0.25), inset 4px 4px 8px rgba(135, 16, 16, 0.5), inset -4px -4px 8px rgba(19, 95, 216, 0.35);
+}
 
-  h2 {
-    font-size: 4rem;
-    font-weight: bolder;
-    text-shadow: 5px 1px 2px rgb(16, 3, 5);
-  }
+.btn-menu:hover {
+  background-position: right top;
+}
 
-  article {
-    border: solid 2px color #6a0a0ad4;
-    border-radius: 2em ;
-    background-color: #6a0a0ad4;
-    padding: 1%;
-    margin: 3%;
-    box-shadow: 10px 5px 5px rgb(12, 1, 1);
-    font-family: 'ephesis', serif;
-  }
-  
+.btn-menu:is(:focus, :focus-visible, :active) {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--btn-bg-color), 0 0 0 6px var(--btn-bg-2);
+}
 
-.img__expo {   
-  width: 35%; /* Pour maintenir le ratio d'aspect */
-    height: 35%; /* Pour éviter la déformation de l'image */
-  object-fit: cover; /* ou "contain" selon vos besoins */
+@media (prefers-reduced-motion: reduce) {
+  .btn-menu {
+    transition: linear;
+  }
+}
+
+h2 {
+  font-size: 4rem;
+  font-weight: bolder;
+  text-shadow: 5px 1px 2px rgb(16, 3, 5);
+}
+
+article {
+  border: solid 2px color #6a0a0ad4;
+  border-radius: 2em;
+  background-color: #6a0a0ad4;
+  padding: 1%;
+  margin: 3%;
+  box-shadow: 10px 5px 5px rgb(12, 1, 1);
+  font-family: 'ephesis', serif;
+}
+
+
+.img__expo {
+  width: 35%;
+  /* Pour maintenir le ratio d'aspect */
+  height: 35%;
+  /* Pour éviter la déformation de l'image */
+  object-fit: cover;
+  /* ou "contain" selon vos besoins */
   margin: 5%;
   box-shadow: 2px 2px 7px 0 rgb(0, 0, 0, 0.2);
-  }
+}
 
-  form {
-    display: flex;
-    flex-direction: column;
-  }
+.img-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
-  .form-group{
-    margin: 0.5%;
-  }
+}
 
-  
-  
-  
-  
- 
+.img-right {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.littleArray {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 2%;
+}
 
 
+.allArray {
+  flex: 1;
+  max-width: 20rem;
+  box-sizing: border-box;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group input {
+  margin: 0.5%;
+  width: 30%;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(55, 65, 81, 1);
+  outline: 0;
+}
+
+#button {
+  font-size: 18px;
+  color: #e1e1e1;
+  font-family: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+}
+
+#button:focus,
+#button:hover {
+  color: #fff;
+}
+
+#button:focus:after,
+#button:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+#button:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
+}
