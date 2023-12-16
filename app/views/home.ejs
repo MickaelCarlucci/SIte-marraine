@@ -26,16 +26,6 @@
         <div class="50">
             <img class="img__expo" src="<%= randomUrl %>" alt="peinture personnalisée">
         </div>
-        <div class="50">
-            <% //ajoute une seconde variable pour exploiter la fonction de mon controleur qui genere des images aléatoires 
-            let randomUrl2; // utilise un do ... while pour indiquer a ma cette variable que tant que
-                //l'url est identique a la premiere, il faut en generer une autre 
-                do { 
-                    randomUrl2=getRandomUrl(); 
-                } while (randomUrl2===randomUrl); 
-            %>
-                <img class="img__expo" src="<%= randomUrl2 %>" alt="peinture personnalisée">
-        </div>
     </div>
 
 
@@ -54,5 +44,28 @@
                     </article>
 
                     <% } %>
+
+
+                    <article>
+                        <div class="form-container" id="contact">
+                            <form class="form" action="/message.ejs" method="post">
+                                <h3>Contactez moi</h3>
+                                <div class="form-group">
+                                <input type="text" id="lastname" name="lastname" placeholder="Votre Nom" >
+                                </div>
+                                <div class="form-group">
+
+                                <input type="text" id="firstname" name="firstname" required placeholder="Votre Prénom*">
+                                </div>
+                                <div class="form-group">
+                                <input type="text" id="email" name="email" required placeholder="Votre adresse mail*">
+                                </div>
+                                <div class="form-group">
+                                <textarea name="message" id="message" cols="100" rows="20" placeholder="Si vous préférez être rappeler. Merci de me laisser votre numéro de téléphone dans votre message"></textarea>
+                                 </div>
+                                <button id="button">Envoyez</button>
+                            </form>
+                        </div>
+                    </article>
 
  <%- include('./partials/footer.ejs') %>
