@@ -1,6 +1,6 @@
 const adminController = {
   admin: (request, response) => {
-
+    
     response.render('adminPage.ejs');
   },
 
