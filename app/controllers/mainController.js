@@ -5,7 +5,9 @@ const mainController = {
   //page d'accueil avec 2 tableaux qui se mettent aléatoirement
   homePage: (request, response) => {
     //fait un tableau d'url a partir du fichier json
-    const urlArrays = arrays.map(array => array.url_img);
+    const urlArrays = arrays
+      .filter(array => array.url_img && array.id)
+      .map(array => ({ url_img: array.url_img, id: array.id }));
     // fonction pour generer des url aléatoire pour afficher des images dans la view
     function getRandomUrl() {
       const randomIndex = Math.floor(Math.random() * urlArrays.length);
@@ -15,9 +17,11 @@ const mainController = {
     const randomUrl = getRandomUrl();
     // récupere le tableau d'objet du fichier json
     const allArrays = arrays; 
+    console.log(randomUrl);
+
             
     
-    response.render('home.ejs', { randomUrl,  getRandomUrl, allArrays });
+    response.render('home.ejs', { randomUrl, allArrays });
   },
     
     

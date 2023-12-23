@@ -24,7 +24,7 @@
 
     <div class="div__img__home">
         <div class="50">
-            <img class="img__expo" src="<%= randomUrl %>" alt="peinture personnalisée">
+            <a href="/tableau/<%= randomUrl.id %>"><img class="img__expo" src="<%= randomUrl.url_img %>" alt="peinture personnalisée"></a>
         </div>
     </div>
 
@@ -33,7 +33,7 @@
         <% if (a % 2 === 0) { %>
           <article id="tableaux" class="img-left">
             <div class="littleArray">
-              <img class="allArray" src="<%= allArrays[a].url_img %>" alt="toile personalisée">
+              <a href="/tableau/<%= allArrays[a].id %>"><img class="allArray" src="<%= allArrays[a].url_img %>" alt="toile personalisée"></a>
             </div>
             <div class="littleArray">
               <p><%= allArrays[a].description %></p>
@@ -42,7 +42,7 @@
         <% } else { %>
           <article class="img-right">
             <div class="littleArray">
-              <img class="allArray" src="<%= allArrays[a].url_img %>" alt="toile personalisée">
+              <a href="/tableau/<%= allArrays[a].id %>"><img class="allArray" src="<%= allArrays[a].url_img %>" alt="toile personalisée"></a>
             </div>
             <div class="littleArray">
               <p><%= allArrays[a].description %></p>

@@ -186,3 +186,9 @@ form {
   transition-duration: 400ms;
   transition-property: width, left;
 }
+
+.oneArray{
+width: 100%;
+height: 100;
+object-fit: cover;
+}
