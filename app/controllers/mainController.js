@@ -16,10 +16,7 @@ const mainController = {
     // crée une premiere variable qui exploite la fonction et l'envoie a la view pour exploiter sur une seconde variable
     const randomUrl = getRandomUrl();
     // récupere le tableau d'objet du fichier json
-    const allArrays = arrays; 
-    console.log(randomUrl);
-
-            
+    const allArrays = arrays;             
     
     response.render('home.ejs', { randomUrl, allArrays });
   },

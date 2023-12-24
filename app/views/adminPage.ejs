@@ -1,5 +1,66 @@
-<%- include('./partials/header.ejs') %>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peintures</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ephesis&family=Skranji:wght@400;700&display=swap"
+        rel="stylesheet">
+        <script src="../../utils.js"></script>
 
-<p>page admin</p>
+
+
+</head>
+
+<body>
+    <header>   
+        <h1 class="title">Les toiles de Patricia</h1>
+        <div class="menu-admin">
+            <nav> <ul>
+                <a href="/"><button class="btn-admin">Accueil</button></a>
+                <button class="btn-admin">Tous les messages</button>
+                <button class="btn-admin">Tous supprimer</button>
+            </ul></nav>
+        </div>
+    </header>
+    <main>
+
+
+<article>
+    <div class="messages-for-artist">
+        <% messagesObject.entries.forEach(message => { %>
+            <div class="message-for-artist">
+                <input type="checkbox">
+                <p><%= message.lastname %>:</p>
+            <a href="#">
+                <p class="restricted-paragraph">
+                    <%= message.message  %>
+                  </p>
+            </a>
+              <div class="message-button">
+                  <a href="#">
+                  
+                      <p class="delete-button">supprimer</p>
+                  </a>
+              </div>
+            </div>
+    
+        <% }) %>
+    </div>
+</article>
+
+<script>
+    const paragraphs = document.querySelectorAll('.restricted-paragraph');
+    const maxCharacters = 50;
+
+    paragraphs.forEach(paragraph => {
+      if (paragraph.textContent.length > maxCharacters) {
+        paragraph.textContent = paragraph.textContent.substring(0, maxCharacters) + '...';
+      }
+    });
+  </script>
 
 <%- include('./partials/footer.ejs') %>
