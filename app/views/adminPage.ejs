@@ -22,23 +22,24 @@
             <nav>
                 <ul>
                     <a href="/"><button class="btn-admin">Accueil</button></a>
+                    <button class="btn-admin">Ajouter un tableau</button>
                     <button class="btn-admin">Tous les messages</button>
-                    <button class="btn-admin">Tous supprimer</button>
+                    <form method="post" action="/robert/delete">
+                    <a href="/robert/delete"><button class="btn-admin">Supprimer la séléction</button></a>
                 </ul>
             </nav>
         </div>
     </header>
     <main>
 
-
         <article>
             <div class="messages-for-artist">
-                <% messagesObject.entries.forEach(message=> { %>
+                <% messagesObject.forEach(message=> { %>
                     <div class="message-for-artist">
                         <div class="message-left">
-                            <input type="checkbox">
+                            <input type="checkbox" name="selectedMessages" value="<%= message.id %>">
                             <p>
-                                <%= message.lastname %>:
+                                <%= message.firstname %>:
                             </p>
                             <a href="#">
                                 <p class="restricted-paragraph">
@@ -47,7 +48,7 @@
                             </a>
                         </div>
                         <div class="message-right">
-                            <a href="#">
+                            <a href="/robert/<%= message.id %>">
 
                                 <p class="delete-button">supprimer</p>
                             </a>
@@ -57,7 +58,7 @@
                     <% }) %>
             </div>
         </article>
-
+    </form>
         <script>
             const paragraphs = document.querySelectorAll('.restricted-paragraph');
             const maxCharacters = 100;
