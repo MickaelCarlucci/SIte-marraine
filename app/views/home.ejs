@@ -29,23 +29,23 @@
     </div>
 
 
-    <% for (let a = 0; a < allArrays.length; a++) { %>
+    <% for (let a = 0; a < arrays.length; a++) { %>
         <% if (a % 2 === 0) { %>
           <article id="tableaux" class="img-left">
             <div class="littleArray">
-              <a href="/tableau/<%= allArrays[a].id %>"><img class="allArray" src="<%= allArrays[a].url_img %>" alt="toile personalisée"></a>
+              <a href="/tableau/<%= arrays[a].id %>"><img class="allArray" src="<%= arrays[a].url_img %>" alt="toile personalisée"></a>
             </div>
             <div class="littleArray">
-              <p><%= allArrays[a].description %></p>
+              <p><%= arrays[a].description %></p>
             </div>
           </article>
         <% } else { %>
           <article class="img-right">
             <div class="littleArray">
-              <a href="/tableau/<%= allArrays[a].id %>"><img class="allArray" src="<%= allArrays[a].url_img %>" alt="toile personalisée"></a>
+              <a href="/tableau/<%= arrays[a].id %>"><img class="allArray" src="<%= arrays[a].url_img %>" alt="toile personalisée"></a>
             </div>
             <div class="littleArray">
-              <p><%= allArrays[a].description %></p>
+              <p><%= arrays[a].description %></p>
             </div>
           </article>
         <% } %>

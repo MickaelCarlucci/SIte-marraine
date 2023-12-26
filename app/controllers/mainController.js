@@ -1,51 +1,49 @@
-const arrays = require('../../tableaux.json');
+const paintingMapper = require("../dataMappers/paintings");
 
 const mainController = {
 
-  //page d'accueil avec 2 tableaux qui se mettent aléatoirement
-  homePage: (request, response) => {
-    //fait un tableau d'url a partir du fichier json
-    const urlArrays = arrays
-      .filter(array => array.url_img && array.id)
-      .map(array => ({ url_img: array.url_img, id: array.id }));
-    // fonction pour generer des url aléatoire pour afficher des images dans la view
-    function getRandomUrl() {
-      const randomIndex = Math.floor(Math.random() * urlArrays.length);
-      return urlArrays[randomIndex];
+  // Page d'accueil avec 2 tableaux qui se mettent aléatoirement
+  homePage: async (request, response) => {
+    try {
+      // Récupère tous les tableaux depuis la base de données
+      const allArrays = await paintingMapper.getAllPaintings();
+      // Extracte les données des tableaux de la réponse SQL
+      const arrays = allArrays.rows;
+
+      // Filtre et map les tableaux qui ont une URL d'image et un ID
+      const urlArrays = allArrays.rows.filter(array => array.url_img && array.id)
+        .map(array => ({ url_img: array.url_img, id: array.id }));
+
+      // Déclaration de la fonction pour obtenir une URL aléatoire
+      // eslint-disable-next-line no-inner-declarations
+      function getRandomUrl() {
+        // Génère un index aléatoire
+        const randomIndex = Math.floor(Math.random() * urlArrays.length);
+        // Retourne l'URL correspondante à l'index aléatoire
+        return urlArrays[randomIndex];
+      }
+
+      // Appel de la fonction pour obtenir une URL aléatoire
+      const randomUrl = getRandomUrl();
+
+      // Rend la vue 'home.ejs' avec les données nécessaires
+      response.render('home.ejs', { randomUrl, arrays });
+    } catch (error) {
+      console.log(error);
     }
-    // crée une premiere variable qui exploite la fonction et l'envoie a la view pour exploiter sur une seconde variable
-    const randomUrl = getRandomUrl();
-    // récupere le tableau d'objet du fichier json
-    const allArrays = arrays;             
-    
-    response.render('home.ejs', { randomUrl, allArrays });
-  },
-    
-    
-
-  /* //page de tous les tableaux avec boucle dans la page ejs a partir du json
-    arrays: (request, response) => {
-        // récupere le tableau d'objet du fichier json
-        const allArrays = arrays;  
-
-        response.render('arrays.ejs', { allArrays })
-    },*/
-
-  contact: (request, response) => {
-        
-
-    response.render('contact.ejs');
   },
 
-  //page qui affiche un tableau
-  array: (request, response) => {
-    //on récupère l'id de la page
+  // Page qui affiche un tableau en particulier
+  array: async (request, response) => {
+    // On récupère l'ID depuis la requête
     const id = Number(request.params.id);
-    // on l'envoie sur l'array qui correspond et on récupere le tableau
-    const oneArray = arrays.find((array) => array.id === id);
+    // On récupère le tableau correspondant à l'ID depuis la base de données
+    const oneArray = await paintingMapper.getOnePainting(id);
     console.log(oneArray);
+    // Rend la vue 'array.ejs' avec les données nécessaires
     response.render('array.ejs', { oneArray });
-  }
-};
+  } 
+}; 
 
+// Exporte le contrôleur principal
 module.exports = mainController;
