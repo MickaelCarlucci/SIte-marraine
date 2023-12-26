@@ -10,6 +10,6 @@ VALUES
 (5, 'https://img.freepik.com/photos-premium/peinture-femme-aux-cheveux-colores_893012-85987.jpg?size=626&ext=jpg&ga=GA1.1.657728215.1700411191&semt=sph', 'Jolie peinture !!');
 
 
-SELECT setval('paintings', (SELECT MAX(id) from "paintings"));
+SELECT setval('paintings_id_seq', (SELECT MAX(id) FROM "paintings"));
 
 COMMIT;
