@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
+const session = require('express-session');
 const router = require('./app/router.js');
 const PORT = process.env.PORT;
 
@@ -10,6 +11,13 @@ app.set("view engine", "ejs");
 app.set('views','./app/views');
 
 app.use(express.static('app/integration'));
+
+app.use(session({
+  secret: 'dsqdsqdzqsdxc',
+  resave: true,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
 
 app.use(router);
 

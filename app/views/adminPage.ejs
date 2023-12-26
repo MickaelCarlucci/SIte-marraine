@@ -32,6 +32,15 @@
     </header>
     <main>
 
+            <article class="login">
+                <form class="login" action="/signup" method="get">
+                    <input type="text" name="user" id="user" placeholder="Identifiant">
+                    <input type="text" name="password" id="password" placeholder="mot de passe">
+                    <button>connexion</button>
+                </form>
+            </article>
+
+
         <article>
             <div class="messages-for-artist">
                 <% messagesObject.forEach(message=> { %>

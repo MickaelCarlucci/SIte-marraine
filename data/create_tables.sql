@@ -2,6 +2,7 @@ BEGIN;
 
 DROP TABLE IF EXISTS "paintings";
 DROP TABLE IF EXISTS "messages";
+DROP TABLE IF EXISTS "administrator";
 
 CREATE TABLE "paintings" (
     "id" SERIAL PRIMARY KEY,
@@ -19,6 +20,11 @@ CREATE TABLE "messages" (
     "message" TEXT NOT NULL,
     "created_at" TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMPTZ
+);
+
+CREATE TABLE "administrator" (
+    "name" TEXT UNIQUE NOT NULL,
+    "password" TEXT NOT NULL
 );
 
 COMMIT;
