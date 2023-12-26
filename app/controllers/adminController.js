@@ -4,7 +4,7 @@ const messages = require('../../messages.json');
 const adminController = {
   admin: (request, response) => {
     const formData = request.body;
-    console.log(formData);
+   
 
     //Charger les données existantes depuis le fichier JSON
     const jsonData = JSON.parse(fs.readFileSync('messages.json', 'utf-8'));

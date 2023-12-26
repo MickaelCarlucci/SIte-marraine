@@ -35,13 +35,19 @@ const mainController = {
 
   // Page qui affiche un tableau en particulier
   array: async (request, response) => {
+    try {
     // On récupère l'ID depuis la requête
-    const id = Number(request.params.id);
-    // On récupère le tableau correspondant à l'ID depuis la base de données
-    const oneArray = await paintingMapper.getOnePainting(id);
-    console.log(oneArray);
-    // Rend la vue 'array.ejs' avec les données nécessaires
-    response.render('array.ejs', { oneArray });
+      const id = Number(request.params.id);
+      // On récupère le tableau correspondant à l'ID depuis la base de données
+      /*const array = await paintingMapper.getOnePainting(id);
+    const oneArray = array.rows;*/
+      const { rows: oneArray } = await paintingMapper.getOnePainting(id);
+ 
+      // Rend la vue 'array.ejs' avec les données nécessaires
+      response.render('array.ejs', { oneArray });
+    }catch(error){
+      console.log(error);
+    }
   } 
 }; 
 
