@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peintures</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ephesis&family=Skranji:wght@400;700&display=swap"
+        rel="stylesheet">
+
+
+
+</head>
+
+<body>
+    <header>
+        <div class="navPosition">
+            <nav>
+                <ul class="navBar">
+                    <a href="/#accueil"><button class="btn-menu">Accueil</button></a>
+                    <a href="/#tableaux"><button class="btn-menu">Tableaux</button></a>
+                    <a href="/#contact"><button class="btn-menu">Contactez-moi</button></a>
+                </ul>
+            </nav>
+        </div>
+        <h1 class="title">Les toiles de Patricia</h1>
+    </header>
+    <main>
+        <article>
+            <form action="/signup" method="post">
+                <h2>Formulaire d'inscription</h2>
+                    <label for="username">Nom d'utilisateur:</label>
+                    <input type="text" id="username" name="username" required>
+            
+                    <label for="first-password">Mot de passe:</label>
+                    <input type="password" id="first-password" name="first-password" required>
+            
+                    <label for="confirmPassword">Confirmer le mot de passe:</label>
+                    <input type="password" id="confirmPassword" name="confirm-Password" required>
+            
+                    <button type="submit">S'inscrire</button>
+                
+             </form>
+        </article>
+    </main>
+    <%- include('./partials/footer.ejs') %>

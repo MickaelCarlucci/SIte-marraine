@@ -25,19 +25,23 @@
                     <button class="btn-admin">Ajouter un tableau</button>
                     <button class="btn-admin">Tous les messages</button>
                     <form method="post" action="/robert/delete">
-                    <a href="/robert/delete"><button class="btn-admin">Supprimer la séléction</button></a>
+                    <a href="/robert/delete"><button class="btn-admin" type="button">Supprimer la séléction</button></a>
                 </ul>
             </nav>
         </div>
     </header>
     <main>
 
-            <article class="login">
-                <form class="login" action="/signup" method="get">
-                    <input type="text" name="user" id="user" placeholder="Identifiant">
-                    <input type="text" name="password" id="password" placeholder="mot de passe">
-                    <button>connexion</button>
-                </form>
+          <article class="login">
+                <form method="post" action="/login">
+                    <label for="name">Nom d'utilisateur:</label>
+                    <input type="text" id="name" name="name" required>
+                
+                    <label for="password">Mot de passe:</label>
+                    <input type="password" id="password" name="password" required>
+                
+                    <button type="submit">Connexion</button>
+                  </form>
             </article>
 
 
