@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const user = require("../dataMappers/user.js");
+const userDataMapper = require("../dataMappers/user.js");
 
 const userController = { 
   //Controller pour trouver la page d'inscription (désactivé car un seul utilisateur)
@@ -35,18 +35,33 @@ const userController = {
 
   login: async (request, response) => {
     try {
-
+      const {adminName, password } = request.body;
+      const userRegister  = await userDataMapper.getUserAndPassword(adminName, password);
+  
+      if(userRegister.rows[0].name !== adminName) {
+        return response.status(401).send('Utilisateur non trouvé');
+      }
+      const storedPassword = userRegister.rows[0].password;
+      const passwordCompare = await bcrypt.compare(password, storedPassword);
+      
+      if(passwordCompare) {
+        request.session.user = userRegister.rows[0];        
+        response.redirect('/robert');
+      } else {
+        response.status(401).send('mot de passe incorrect');
+      }      
 
     }catch(error) {
       console.log(error);
     }       
   },
 
+
   logout: async (request, response) => {
 
     try {
-
-
+      request.session.user = request.session.destroy();
+      response.redirect('/robert');
     }catch(error) {
       console.log(error);
     }       

@@ -1,8 +1,8 @@
 const client = require("../../data/database.js");
 
 const user = {
-  async getUserAndPassword(name, password) {
-    return await client.query("SELECT * FROM administrator WHERE name = $1 AND password = $2", [name, password]);
+  async getUserAndPassword(name) {
+    return await client.query("SELECT * FROM administrator WHERE name = $1", [name]);
   },
 
   async signup(username, hashedPassword) {

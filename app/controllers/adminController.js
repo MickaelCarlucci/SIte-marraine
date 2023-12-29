@@ -22,18 +22,28 @@ const adminController = {
     }
   },
 
-  // Affiche la page d'administration avec tous les messages
+  //affiche la page admin
   adminHome: async (request, response) => {
     try {
+      // Initialise un user dans la session quand on arrive sur la page pour la première fois
+      if (!request.session.user) {
+        request.session.user = null;
+      }
+  
       // Récupère tous les messages à afficher
-      const {rows: messagesObject} = await message.allMessages();
+      const { rows: messagesObject } = await message.allMessages();
+  
+      // Stocke messagesObject dans response.locals
+      response.locals.messagesObject = messagesObject;
+  
       // Rend la page d'administration avec les messages
-      response.render('adminPage.ejs', { messagesObject });
+      response.render('adminPage.ejs', { user: request.session.user, messagesObject });
     } catch (error) {
       // Gère les erreurs en les affichant dans la console
       console.log(error);
     }
   },
+  
 
   // Supprime un message spécifié par son ID
   delete: async (request, response) => {
