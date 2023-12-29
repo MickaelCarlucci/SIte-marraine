@@ -2,7 +2,8 @@ const bcrypt = require('bcrypt');
 const user = require("../dataMappers/user.js");
 
 const userController = { 
-  getSignupPage: async (request, response) => {
+  //Controller pour trouver la page d'inscription (désactivé car un seul utilisateur)
+  /*getSignupPage: async (request, response) => {
     try {
 
       response.render('signup.ejs');
@@ -12,14 +13,17 @@ const userController = {
     }  
   },
 
+    //controller pour gérer le formulaire d'inscription avec bcrypt
   signup: async (request, response) => {
     try {
       const {username, firstPassword, confirmPassword} = request.body;
       if (firstPassword !== confirmPassword) {
         return response.status(400).send('les mots de passe ne correspondent pas');
       }
+      const saltRounds = 10;
+      const salt = await bcrypt.genSalt(saltRounds);
 
-      const hashedPassword = await bcrypt.hash(firstPassword, 10);
+      const hashedPassword = await bcrypt.hash(firstPassword, salt);
       await user.signup(username, hashedPassword);
       response.send("Inscription réussie !");
 
@@ -27,17 +31,7 @@ const userController = {
     }catch(error) {
       console.log(error);
     }       
-  },
-
-  getLoginPage: async (request, response) => {
-
-    try {
-      response.render('robert.ejs');
-
-    }catch(error) {
-      console.log(error);
-    }       
-  },
+  },*/
 
   login: async (request, response) => {
     try {
