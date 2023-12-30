@@ -68,7 +68,7 @@ const adminController = {
     }
   },
 
-  // Supprime plusieurs messages sélectionnés
+  // Supprime plusieurs messages sélectionnés : controller a revoir, non fonctionnel
   deleteSelectedMessages: async (request, response) => {
     try {
       // Récupère les messages sélectionnés depuis le corps de la requête
