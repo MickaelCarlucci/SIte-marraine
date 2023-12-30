@@ -9,11 +9,6 @@ VALUES
 (4, 'https://img.freepik.com/photos-premium/peinture-abstraite-aux-couleurs-jaune-noir-blanc_893012-93228.jpg?size=626&ext=jpg', 'Amazing !'),
 (5, 'https://img.freepik.com/photos-premium/peinture-femme-aux-cheveux-colores_893012-85987.jpg?size=626&ext=jpg&ga=GA1.1.657728215.1700411191&semt=sph', 'Jolie peinture !!');
 
-INSERT INTO "administrator"
-("name", "password")
-VALUES
-('patArtiste', 'MonNomEstPatocheLaRigolote');
-
 SELECT setval('paintings_id_seq', (SELECT MAX(id) FROM "paintings"));
 
 COMMIT;

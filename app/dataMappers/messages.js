@@ -22,6 +22,10 @@ const message = {
     return result.rowCount;
   },
 
+  async getOneMessage (id) {
+    return await client.query("SELECT * FROM messages WHERE id = $1", [id]);
+  },
+
   async deleteMessage(id) {
     return await client.query("DELETE FROM messages WHERE id = $1", [id]);
   }

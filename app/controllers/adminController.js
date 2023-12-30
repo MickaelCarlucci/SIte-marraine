@@ -33,13 +33,21 @@ const adminController = {
       // Récupère tous les messages à afficher
       const { rows: messagesObject } = await message.allMessages();
   
-      // Stocke messagesObject dans response.locals
-      response.locals.messagesObject = messagesObject;
-  
       // Rend la page d'administration avec les messages
       response.render('adminPage.ejs', { user: request.session.user, messagesObject });
     } catch (error) {
       // Gère les erreurs en les affichant dans la console
+      console.log(error);
+    }
+  },
+
+  adminOneMessage: async (request, response) => {
+    try {
+      const id = Number(request.params.id);
+      const oneMessage = await message.getOneMessage(id);
+      console.log(oneMessage.rows);
+      response.render('adminMessage.ejs', {oneMessage: oneMessage.rows[0]});
+    }catch(error) {
       console.log(error);
     }
   },
@@ -93,20 +101,9 @@ const adminController = {
       // Renvoie une erreur 500 en cas d'erreur interne du serveur
       response.status(500).send("Erreur interne du serveur");
     }
-  },
-  
-  // Affiche la page d'administration avec tous les messages (identique à adminHome ?)
-  adminMail: async (request, response) => {
-    try {
-      // Récupère tous les messages à afficher
-      const {rows: messagesObject} = await message.allMessages();
-      // Rend la page d'administration avec les messages
-      response.render('adminPage.ejs', { messagesObject });
-    } catch (error) {
-      // Gère les erreurs en les affichant dans la console
-      console.log(error);
-    }
   }
+  
+
 };
 
 // Exporte le contrôleur administratif pour une utilisation externe

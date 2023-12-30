@@ -58,14 +58,14 @@
                                     <p>
                                         <%= message.firstname %>:
                                     </p>
-                                    <a href="#">
+                                    <a href="/robert/message/<%= message.id %>">
                                         <p class="restricted-paragraph">
                                             <%= message.message %>
                                         </p>
                                     </a>
                                 </div>
                                 <div class="message-right">
-                                    <a href="/robert/<%= message.id %>">
+                                    <a href="/delete/<%= message.id %>">
                                         
                                         <p class="delete-button">supprimer</p>
                                     </a>

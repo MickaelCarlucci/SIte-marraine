@@ -9,8 +9,8 @@ router.get('/', mainController.homePage);
 router.get('/tableau/:id', mainController.array);
 router.get('/robert', adminController.adminHome);
 router.post('/robert', adminController.admin);
-router.get('/robert/:id', adminController.delete);
-router.get('/robert/message/:id', adminController.adminMail);
+//router.get('/robert/:id', adminController.delete);
+router.get('/robert/message/:id', adminController.adminOneMessage);
 
 router.post('/login', userController.login);
 router.get('/logout', userController.logout);
