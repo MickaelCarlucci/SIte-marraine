@@ -23,7 +23,7 @@
                 <ul>
                     <a href="/"><button class="btn-admin">Accueil</button></a>
                     <button class="btn-admin">Ajouter un tableau</button>
-                    <button class="btn-admin">Tous les messages</button>
+                    <a href="/robert"><button class="btn-admin">Tous les messages</button></a>
                 </ul>
             </nav>
         </div>
@@ -37,7 +37,7 @@
         <p>Email: <%= oneMessage.mail %></p>
     </article>
     <article class="oneMessage-date">
-        <p>Message reçu le   <%= oneMessage.created_at.toLocaleDateString() %></p>
+        <p>Message reçu le:   <%= oneMessage.created_at.toLocaleDateString() %></p>
     </article>
     <article>
         <p><%= oneMessage.message %></p>
