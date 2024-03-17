@@ -272,7 +272,7 @@ width: 100%;
 
 @media screen and (max-width: 768px) {
   .navBar {
-    flex-direction: wrap; /* Passer à une disposition en colonne pour les petits écrans */
+    flex-direction: wrap; /* Passer à une disposition en ligne pour les petits écrans */
     padding: 2%; /* Ajuster l'espacement pour les petits écrans */
     margin: 1%; /* Ajuster la marge pour les petits écrans */
   }
