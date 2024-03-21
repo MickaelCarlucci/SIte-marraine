@@ -5,6 +5,7 @@ const mainController = {
   // Page d'accueil avec 2 tableaux qui se mettent aléatoirement
   homePage: async (request, response) => {
     try {
+      const user = request.user;
       // Récupère tous les tableaux depuis la base de données
       const allArrays = await paintingMapper.getAllPaintings();
       // Extracte les données des tableaux de la réponse SQL
@@ -27,7 +28,7 @@ const mainController = {
       const randomUrl = getRandomUrl();
 
       // Rend la vue 'home.ejs' avec les données nécessaires
-      response.render('home.ejs', { randomUrl, arrays });
+      response.render('home.ejs', { randomUrl, arrays, user });
     } catch (error) {
       console.log(error);
     }
@@ -45,16 +46,6 @@ const mainController = {
  
       // Rend la vue 'array.ejs' avec les données nécessaires
       response.render('array.ejs', { oneArray });
-    }catch(error){
-      console.log(error);
-    }
-  },
-  
-  arrayDescriptif: async (request, response) => { 
-    try {
-      const id = Number(request.params.id);
-      const actualDescription = await paintingMapper.getOnePainting(id)
-      response.render('modals.ejs', {actualDescription});
     }catch(error){
       console.log(error);
     }

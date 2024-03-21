@@ -37,19 +37,27 @@
             </div>
             <div class="littleArray">
               <p><%= arrays[a].description %></p>
+              <% if (user && user.name && user.name === process.env.NAME_ADMIN) { %>
+                <button id="openModalBtn">Ouvrir la modification</button>
+              <% } %>
             </div>
           </article>
-        <% } else { %>
-          <article class="img-right">
-            <div class="littleArray">
-              <a href="/tableau/<%= arrays[a].id %>"><img class="allArray" src="<%= arrays[a].url_img %>" alt="toile personalisée"></a>
-            </div>
-            <div class="littleArray">
-              <p><%= arrays[a].description %></p>
-            </div>
-          </article>
-        <% } %>
-      <% } %>
+          <% } else { %>
+            <article class="img-right">
+              <div class="littleArray">
+                <a href="/tableau/<%= arrays[a].id %>"><img class="allArray" src="<%= arrays[a].url_img %>" alt="toile personalisée"></a>
+              </div>
+              <div class="littleArray">
+                <p><%= arrays[a].description %></p>
+                <% if (user && user.name && user.name === process.env.NAME_ADMIN) { %>
+                  <button id="openModalBtn">Ouvrir la modification</button>
+                  <% } %>
+                </div>
+              </article>
+              <% } %>
+              <% } %>
+              <!-- Inclure le template de modal -->
+    <%- include('modal.ejs') %>
                     <article>
                         <div class="form-container" id="contact">
                             <form class="form" action="/robert" method="post">
@@ -73,6 +81,6 @@
                         </div>
                     </article>
 
-                      
+
 
  <%- include('./partials/footer.ejs') %>
