@@ -48,7 +48,17 @@ const mainController = {
     }catch(error){
       console.log(error);
     }
-  } 
+  },
+  
+  arrayDescriptif: async (request, response) => { 
+    try {
+      const id = Number(request.params.id);
+      const actualDescription = await paintingMapper.getOnePainting(id)
+      response.render('modals.ejs', {actualDescription});
+    }catch(error){
+      console.log(error);
+    }
+  }
 }; 
 
 // Exporte le contrôleur principal

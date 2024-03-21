@@ -1,4 +1,5 @@
 const message = require("../dataMappers/messages");
+const painting = require("../dataMappers/paintings");
 
 // Contrôleur pour les fonctionnalités administratives
 const adminController = {
@@ -101,8 +102,23 @@ const adminController = {
       // Renvoie une erreur 500 en cas d'erreur interne du serveur
       response.status(500).send("Erreur interne du serveur");
     }
-  }
+  },
   
+  arrayUpdated: async(request, response) => {
+    try {
+      // Récupère l'ID du tableau à modifier
+      const id = Number(request.params.id);
+      // On récupère le changement
+      const description = request.body.description;
+      // met a jour la description dans la base de donnée
+      await paintings.updateDesc(description, id);
+      // Redirige vers une page spécifique après la suppression
+      response.redirect("/#tableaux");
+    } catch (error) {
+      // Gère les erreurs en les affichant dans la console
+      console.log(error);
+    }
+  }
 
 };
 

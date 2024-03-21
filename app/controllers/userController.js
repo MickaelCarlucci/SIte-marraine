@@ -3,7 +3,7 @@ const userDataMapper = require("../dataMappers/user.js");
 
 const userController = { 
   //Controller pour trouver la page d'inscription (désactivé car un seul utilisateur)
-  /*getSignupPage: async (request, response) => {
+  getSignupPage: async (request, response) => {
     try {
 
       response.render('signup.ejs');
@@ -24,14 +24,14 @@ const userController = {
       const salt = await bcrypt.genSalt(saltRounds);
 
       const hashedPassword = await bcrypt.hash(firstPassword, salt);
-      await user.signup(username, hashedPassword);
+      await userDataMapper.signup(username, hashedPassword);
       response.send("Inscription réussie !");
 
 
     }catch(error) {
       console.log(error);
     }       
-  },*/
+  },
 
   login: async (request, response) => {
     try {

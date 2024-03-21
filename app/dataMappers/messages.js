@@ -27,7 +27,7 @@ const message = {
   },
 
   async deleteMessage(id) {
-    return await client.query("DELETE FROM messages WHERE id = $1", [id]);
+    return await client.query("DELETE * FROM messages WHERE id = $1", [id]);
   }
   
 };

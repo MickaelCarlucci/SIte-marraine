@@ -7,7 +7,9 @@ DROP TABLE IF EXISTS "administrator";
 CREATE TABLE "paintings" (
     "id" SERIAL PRIMARY KEY,
     "url_img" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
     "description" TEXT,
+    "price" INTEGER NOT NULL,
     "created_at" TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMPTZ
 );
