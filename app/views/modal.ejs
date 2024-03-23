@@ -3,8 +3,9 @@
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <form action="/" method="update">
-            <textarea name="description" id="description" cols="100" rows="20"><%= arrays.description %></textarea>
+        <form action="/updateArray/<%= arrays.id %>" method="update">
+            <textarea name="description" id="description" cols="100" rows="20" placeholder="<%= arrays.description %>"></textarea>
+            <button>Modifier</button>
         </form>
     </div>
 </div>

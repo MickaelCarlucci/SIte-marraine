@@ -111,7 +111,7 @@ const adminController = {
       // On récupère le changement
       const description = request.body.description;
       // met a jour la description dans la base de donnée
-      await paintings.updateDesc(description, id);
+      await painting.updateDesc(description, id);
       // Redirige vers une page spécifique après la suppression
       response.redirect("/#tableaux");
     } catch (error) {
