@@ -308,16 +308,38 @@ max-height: 100%;
   cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   .navBar {
     display: flex;
-    flex-direction: row ; /* Passer à une disposition en ligne pour les petits écrans */
+    flex-direction: row ;
     justify-content: center;
-    padding: 2%; /* Ajuster l'espacement pour les petits écrans */
-    margin: 1%; /* Ajuster la marge pour les petits écrans */
+    padding: 2%; 
+    margin: 1%; 
   }
 
   .navPosition {
-    position: sticky;
+    position: fixed;
+    top: 10%;
+    left: 50%;
   }
+} */
+
+@media screen and (max-width: 768px) {
+  .navBar {
+    position: fixed; /* Rend la navBar fixe */
+    top: 0; /* La positionne en bas de l'écran */
+    left: 50%; /* La déplace de 50% de la largeur de l'écran à partir de la gauche */
+    transform: translateX(-50%); /* La décale de 50% de sa propre largeur vers la gauche pour la centrer */
+    width: 100%; /* Définit la largeur à 100% de la largeur de l'écran */
+    flex-direction: row; /* Assure que les éléments sont disposés en ligne */
+    justify-content: center; /* Centre les éléments à l'intérieur de la navBar */
+    padding: 2%; /* Ajuste le padding pour un meilleur look */
+    margin: 0; /* Supprime les marges pour éviter tout décalage indésirable */
+    background-color: rgba(141, 10, 10, 0.953); /* Vous pouvez ajuster la couleur de fond au besoin */
+    z-index: 100; /* S'assure que la navBar reste au-dessus des autres éléments de la page */
+  }
+
+h1{
+  margin-top: 8%;
+}
 }
