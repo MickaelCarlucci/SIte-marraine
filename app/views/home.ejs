@@ -24,7 +24,8 @@
 
     <div class="div__img__home">
         <div class="50">
-            <a href="/tableau/<%= randomUrl.id %>"><img class="img__expo" src="<%= randomUrl.url_img %>" alt="peinture personnalisée"></a>
+            <a href="/tableau/<%= randomUrl.id %>"><img class="img__expo" src="<%= randomUrl.url_img %>" 
+              alt="<%= randomUrl.description %>" aria-label="<%= randomUrl.description %>"></a>
         </div>
     </div>
 
@@ -33,7 +34,8 @@
       <% if (a % 2 === 0) { %>
         <article id="tableaux" class="img-left">
           <div class="littleArray">
-            <a href="/tableau/<%= arrays[a].id %>"><img class="allArray" src="<%= arrays[a].url_img %>" alt="<%= arrays[a].description %>"></a>
+            <a href="/tableau/<%= arrays[a].id %>"><img class="allArray" src="<%= arrays[a].url_img %>" 
+              alt="<%= arrays[a].description %>" aria-label="<%= arrays[a].description %>"></a>
           </div>
           <div class="littleArray">
             <p><%= arrays[a].title %></p>
@@ -55,7 +57,8 @@
 
         <article class="img-right">
           <div class="littleArray">
-            <a href="/tableau/<%= arrays[a].id %>"><img class="allArray" src="<%= arrays[a].url_img %>" alt="<%= arrays[a].description %>"></a>
+            <a href="/tableau/<%= arrays[a].id %>"><img class="allArray" src="<%= arrays[a].url_img %>" 
+              alt="<%= arrays[a].description %>" aria-label="<%= arrays[a].description %>"></a>
           </div>
           <div class="littleArray">
             <p><%= arrays[a].title %></p>
