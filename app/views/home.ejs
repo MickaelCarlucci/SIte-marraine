@@ -67,7 +67,7 @@
             <% } %>
             <p><%= arrays[a].description %></p>
             <% if (user && user.name && user.name === process.env.NAME_ADMIN) { %>
-              <button class="openModalBtn">Modifier</button>
+              <button class="openModalBtn" data-id="<%= arrays[a].id %>">Modifier</button>
             <% } %>
             <p>Prix: <%= arrays[a].price %> euros</p>
             <% if (user && user.name && user.name === process.env.NAME_ADMIN) { %>
@@ -79,7 +79,7 @@
     <% } %>
     
     <!-- Inclure le template de modal -->
-    <%- include('modal.ejs') %>
+    <%- include('modal.description.ejs') %>
                     <article>
                         <div class="form-container" id="contact">
                             <form class="form" action="/robert" method="post">

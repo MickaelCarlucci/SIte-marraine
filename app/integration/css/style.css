@@ -297,6 +297,7 @@ max-height: 100%;
 /* Bouton de fermeture de la modal */
 .close {
   color: #aaaaaa;
+  margin-left: 2%;
   float: right;
   font-size: 28px;
   font-weight: bold;

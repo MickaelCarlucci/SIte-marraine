@@ -13,7 +13,7 @@ const painting = {
   async updateDesc(description, id) {
     return await client.query(`UPDATE "paintings"
                               SET "description" = $1
-                              WHERE "id" = $2`, [description, id])
+                              WHERE "id" = $2`, [description, id]);
   }
 };
 
