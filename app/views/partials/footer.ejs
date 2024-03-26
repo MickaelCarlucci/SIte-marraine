@@ -24,9 +24,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const modalBtns = document.querySelectorAll('.openModalBtn');
     const span = document.getElementsByClassName('close')[0];
     const form = modal.querySelector('form');
+    const descriptionField = form.querySelector('#description');
 
     modalBtns.forEach(btn => {
         btn.addEventListener('click', function () {
+            // Effacer le contenu précédent de la modal
+            const elementId = btn.getAttribute('data-id');
+            form.setAttribute('data-id', elementId);
+            descriptionField.value = '';
             modal.style.display = 'block';
         });
     });
@@ -43,25 +48,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Gestionnaire d'événements pour la soumission du formulaire
     form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Empêche l'envoi du formulaire par défaut
+    event.preventDefault(); // Empêche l'envoi du formulaire par défaut
 
-        // Récupérer la description depuis le champ textarea
-        const description = form.querySelector('#description').value;
-        // Récupérer l'ID depuis un attribut data sur le formulaire ou tout autre moyen approprié
-        const id = form.dataset.id;
+    // Récupérer la description depuis le champ textarea
+    const description = descriptionField.value;
+    // Récupérer l'ID depuis l'attribut data du formulaire
+    const id = form.dataset.id;
 
-        // Effectuer une requête AJAX vers votre route Express avec les données du formulaire
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', '/updateArray/' + id, true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // Traiter la réponse si nécessaire
-                console.log('Données mises à jour avec succès');
+    // Configurer les options de la requête
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ description: description })
+    };
+
+    // Effectuer la requête Fetch
+    fetch('/updateArray/' + id, options)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erreur lors de la requête AJAX : ' + response.status);
             }
-        };
-        xhr.send(JSON.stringify({ description: description }));
-    });
+            // Traiter la réponse si nécessaire
+            console.log('Données mises à jour avec succès');
+        })
+        .catch(error => {
+            // Gérer les erreurs de la requête Fetch
+            console.error(error);
+        });
+});
 });
   </script>
 

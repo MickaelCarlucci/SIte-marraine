@@ -12,6 +12,7 @@ app.set('views','./app/views');
 
 
 app.use(express.static('app/integration'));
+app.use(express.json());
 
 app.use(session({
   secret: 'dsqdsqdzqsdxc',

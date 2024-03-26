@@ -108,8 +108,10 @@ const adminController = {
     try {
       // Récupère l'ID du tableau à modifier
       const id = Number(request.params.id);
+      console.log(id);
       // On récupère le changement
-      const description = request.body.description;
+      const {description} = request.body;
+      console.log(description);
       // met a jour la description dans la base de donnée
       await painting.updateDesc(description, id);
       // Redirige vers une page spécifique après la suppression

@@ -1,0 +1,12 @@
+@endpoint=http://localhost:3010
+
+###
+GET {{endpoint}}/tableau/1
+
+###
+POST {{endpoint}}/updateArray/2
+Content-Type: application/json
+
+{    
+    "description": "Bonjour Thomas"
+}

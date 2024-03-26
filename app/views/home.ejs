@@ -44,7 +44,7 @@
             <% } %>
             <p><%= arrays[a].description %></p>
             <% if (user && user.name && user.name === process.env.NAME_ADMIN) { %>
-              <button class="openModalBtn">Modifier</button>
+              <button data-id="<%= arrays[a].id %>" class="openModalBtn">Modifier</button>
             <% } %>
             <p>Prix: <%= arrays[a].price %> euros</p>
             <% if (user && user.name && user.name === process.env.NAME_ADMIN) { %>

@@ -3,7 +3,7 @@ const client = require("../../data/database.js");
 const painting = {
 
   async getAllPaintings() {
-    return await client.query("SELECT * FROM paintings");
+    return await client.query("SELECT * FROM paintings ORDER BY id ");
   },
 
   async getOnePainting(id) {
