@@ -4,9 +4,25 @@
 GET {{endpoint}}/tableau/1
 
 ###
-POST {{endpoint}}/updateArray/2
+POST {{endpoint}}/updateArrayDesc/1
 Content-Type: application/json
 
 {    
-    "description": "Bonjour Thomas"
+    "description": "Encore un nouveau test"
+}
+
+###
+POST {{endpoint}}/updateArrayTitle/1
+Content-Type: application/json
+
+{    
+    "title": "Tango trés Torride"
+}
+
+###
+POST {{endpoint}}/updateArrayPrice/1
+Content-Type: application/json
+
+{    
+    "price": 49
 }

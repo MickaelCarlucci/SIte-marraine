@@ -103,17 +103,48 @@ const adminController = {
       response.status(500).send("Erreur interne du serveur");
     }
   },
-  
-  arrayUpdated: async(request, response) => {
+
+  arrayUpdatedTitle: async(request, response) => {
     try {
       // Récupère l'ID du tableau à modifier
       const id = Number(request.params.id);
-      console.log(id);
+      // On récupère le changement
+      const {title} = request.body;
+      // met a jour la description dans la base de donnée
+      await painting.updateTitle(title, id);
+      // Redirige vers une page spécifique après la suppression
+      response.redirect("/#tableaux");
+    } catch (error) {
+      // Gère les erreurs en les affichant dans la console
+      console.log(error);
+    }
+  },
+  
+  arrayUpdatedDesc: async(request, response) => {
+    try {
+      // Récupère l'ID du tableau à modifier
+      const id = Number(request.params.id);
       // On récupère le changement
       const {description} = request.body;
-      console.log(description);
       // met a jour la description dans la base de donnée
       await painting.updateDesc(description, id);
+      // Redirige vers une page spécifique après la suppression
+      response.redirect("/#tableaux");
+    } catch (error) {
+      // Gère les erreurs en les affichant dans la console
+      console.log(error);
+    }
+  },
+
+  arrayUpdatedPrice: async(request, response) => {
+    try {
+      // Récupère l'ID du tableau à modifier
+      const id = Number(request.params.id);
+      // On récupère le changement
+      const {price} = request.body;
+      console.log(price);
+      // met a jour la description dans la base de donnée
+      await painting.updatePrice(price, id);
       // Redirige vers une page spécifique après la suppression
       response.redirect("/#tableaux");
     } catch (error) {

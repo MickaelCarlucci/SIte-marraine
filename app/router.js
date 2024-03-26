@@ -12,7 +12,9 @@ router.post('/robert', adminController.admin);
 router.get('/delete/:id', adminController.delete);
 router.get('/robert/message/:id', adminController.adminOneMessage);
 
-router.post('/updateArray/:id', adminController.arrayUpdated);
+router.post('/updateArrayTitle/:id', adminController.arrayUpdatedTitle);
+router.post('/updateArrayDesc/:id', adminController.arrayUpdatedDesc);
+router.post('/updateArrayPrice/:id', adminController.arrayUpdatedPrice);
 
 router.post('/login', userController.login);
 router.get('/logout', userController.logout);
