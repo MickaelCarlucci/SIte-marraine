@@ -18,68 +18,198 @@
     });
 </script>
 
+<!-- javascript modal description  -->
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const modal = document.getElementById('myModal');
-    const modalBtns = document.querySelectorAll('.openModalBtn');
-    const span = document.getElementsByClassName('close')[0];
-    const form = modal.querySelector('form');
-    const descriptionField = form.querySelector('#description');
-
-    modalBtns.forEach(btn => {
-        btn.addEventListener('click', function () {
-            // Effacer le contenu précédent de la modal
-            const elementId = btn.getAttribute('data-id');
-            form.setAttribute('data-id', elementId);
-            descriptionField.value = '';
-            modal.style.display = 'block';
+    document.addEventListener('DOMContentLoaded', function () {
+        const modal = document.getElementById('myModal');
+        const modalBtns = document.querySelectorAll('.openModalBtn');
+        const span = document.getElementById('close-desc');
+        const formDesc = modal.querySelector('#formDesc');
+        const descriptionField = formDesc.querySelector('#description');
+    
+        modalBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                // Effacer le contenu précédent de la modal
+                const elementId = btn.getAttribute('data-id');
+                formDesc.setAttribute('data-id', elementId);
+                descriptionField.value = '';
+                modal.style.display = 'block';
+            });
         });
-    });
-
-    span.onclick = function () {
-        modal.style.display = 'none';
-    }
-
-    window.onclick = function (event) {
-        if (event.target === modal) {
+    
+        span.onclick = function () {
             modal.style.display = 'none';
         }
-    }
-
-    // Gestionnaire d'événements pour la soumission du formulaire
-    form.addEventListener('submit', function (event) {
-    event.preventDefault(); // Empêche l'envoi du formulaire par défaut
-
-    // Récupérer la description depuis le champ textarea
-    const description = descriptionField.value;
-    // Récupérer l'ID depuis l'attribut data du formulaire
-    const id = form.dataset.id;
-
-    // Configurer les options de la requête
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ description: description })
-    };
-
-    // Effectuer la requête Fetch
-    fetch('/updateArray/' + id, options)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erreur lors de la requête AJAX : ' + response.status);
+    
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
             }
-            // Traiter la réponse si nécessaire
-            console.log('Données mises à jour avec succès');
-        })
-        .catch(error => {
-            // Gérer les erreurs de la requête Fetch
-            console.error(error);
+        }
+    
+        // Gestionnaire d'événements pour la soumission du formulaire
+        formDesc.addEventListener('submit', function (event) {
+            event.preventDefault(); // Empêche l'envoi du formulaire par défaut
+    
+            // Récupérer la description depuis le champ textarea
+            const description = descriptionField.value;
+            // Récupérer l'ID depuis l'attribut data du formulaire
+            const id = formDesc.dataset.id;
+    
+            // Configurer les options de la requête
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ description: description })
+            };
+    
+            // Effectuer la requête Fetch
+            fetch('/updateArrayDesc/' + id, options)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erreur lors de la requête AJAX : ' + response.status);
+                    }
+                    // Traiter la réponse si nécessaire
+                    console.log('Données mises à jour avec succès');
+                })
+                .catch(error => {
+                    // Gérer les erreurs de la requête Fetch
+                    console.error(error);
+                });
         });
-});
-});
-  </script>
+    });
+    </script>
+    
+    <!-- javascript modal title  -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const modal = document.getElementById('myModalTitle');
+        const modalBtns = document.querySelectorAll('.openModalBtnTitle');
+        const span = document.getElementById('close-title');
+        const formTitle = modal.querySelector('#formTitle');
+        const titleField = formTitle.querySelector('#title');
+    
+        modalBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                // Effacer le contenu précédent de la modal
+                const titleId = btn.getAttribute('data-id');
+                console.log('Element ID:', titleId);
+                formTitle.setAttribute('data-id', titleId);
+                titleField.value = '';
+                modal.style.display = 'block';
+            });
+        });
+    
+        span.onclick = function () {
+            modal.style.display = 'none';
+        }
+    
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    
+        // Gestionnaire d'événements pour la soumission du formulaire
+        formTitle.addEventListener('submit', function (event) {
+            event.preventDefault(); // Empêche l'envoi du formulaire par défaut
+    
+            // Récupérer la description depuis le champ textarea
+            const title = titleField.value;
+            // Récupérer l'ID depuis l'attribut data du formulaire
+            const id = formTitle.dataset.id;
+    
+            // Configurer les options de la requête
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ title: title })
+            };
+    
+            // Effectuer la requête Fetch
+            fetch('/updateArrayTitle/' + id, options)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erreur lors de la requête AJAX : ' + response.status);
+                    }
+                    // Traiter la réponse si nécessaire
+                    console.log('Données mises à jour avec succès');
+                })
+                .catch(error => {
+                    // Gérer les erreurs de la requête Fetch
+                    console.error(error);
+                });
+        });
+    });
+    </script>
+    
+    <!-- javascript modal price  -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const modal = document.getElementById('myModalPrice');
+        const modalBtns = document.querySelectorAll('.openModalBtnPrice');
+        const span = document.getElementById('close-price');
+        const formPrice = modal.querySelector('#formPrice');
+        const priceField = formPrice.querySelector('#price');
+    
+        modalBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                // Effacer le contenu précédent de la modal
+                const priceId = btn.getAttribute('data-id');
+                formPrice.setAttribute('data-id', priceId);
+                priceField.value = '';
+                modal.style.display = 'block';
+            });
+        });
+    
+        span.onclick = function () {
+            modal.style.display = 'none';
+        }
+    
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    
+        // Gestionnaire d'événements pour la soumission du formulaire
+        formPrice.addEventListener('submit', function (event) {
+            event.preventDefault(); // Empêche l'envoi du formulaire par défaut
+    
+            // Récupérer la price depuis le champ textarea
+            const price = priceField.value;
+            // Récupérer l'ID depuis l'attribut data du formulaire
+            const id = formPrice.dataset.id;
+    
+            // Configurer les options de la requête
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ price: price })
+            };
+    
+            // Effectuer la requête Fetch
+            fetch('/updateArrayPrice/' + id, options)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erreur lors de la requête AJAX : ' + response.status);
+                    }
+                    // Traiter la réponse si nécessaire
+                    console.log('Données mises à jour avec succès');
+                })
+                .catch(error => {
+                    // Gérer les erreurs de la requête Fetch
+                    console.error(error);
+                });
+        });
+    });
+    </script>
 
 
 </body>
