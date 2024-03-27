@@ -4,7 +4,7 @@ const painting = require("../dataMappers/paintings");
 // Contrôleur pour les fonctionnalités administratives
 const adminController = {
 
-  // Gère l'ajout d'un message par un artiste
+  // Gère l'ajout d'un message par un utilisateur
   admin: async (request, response) => {
     const formData = request.body;
     try {

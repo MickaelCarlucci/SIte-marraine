@@ -13,7 +13,7 @@ const userController = {
     }  
   },
 
-    //controller pour gérer le formulaire d'inscription avec bcrypt
+  //controller pour gérer le formulaire d'inscription avec bcrypt
   signup: async (request, response) => {
     try {
       const {username, firstPassword, confirmPassword} = request.body;
