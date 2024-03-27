@@ -3,8 +3,6 @@
     <div class="modal-content">
         <span class="close" id="close-title">&times;</span>
         <form id="formTitle" action="/updateArrayTitle/<%= arrays.id %>" method="post" data-id="<%= arrays.id %>">
-            <!-- Champ caché pour l'ID du tableau -->
-            <input type="hidden" name="id">
             <textarea name="title" id="title" cols="100" rows="20" placeholder="<%= arrays.title %>"></textarea>
             <button type="submit">Modifier</button>
         </form>

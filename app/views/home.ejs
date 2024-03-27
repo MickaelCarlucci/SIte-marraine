@@ -40,7 +40,7 @@
           <div class="littleArray">
             <p><%= arrays[a].title %></p>
             <% if (user && user.name && user.name === process.env.NAME_ADMIN) { %>
-              <button class="openModalBtnTitle">Modifier</button>
+              <button data-id="<%= arrays[a].id %>" class="openModalBtnTitle">Modifier</button>
             <% } %>
             <p><%= arrays[a].description %></p>
             <% if (user && user.name && user.name === process.env.NAME_ADMIN) { %>
@@ -48,7 +48,7 @@
             <% } %>
             <p>Prix: <%= arrays[a].price %> euros</p>
             <% if (user && user.name && user.name === process.env.NAME_ADMIN) { %>
-              <button class="openModalBtnPrice">Modifier</button>
+              <button data-id="<%= arrays[a].id %>" class="openModalBtnPrice">Modifier</button>
             <% } %>
           </div>
         </article>
@@ -63,7 +63,7 @@
           <div class="littleArray">
             <p><%= arrays[a].title %></p>
             <% if (user && user.name && user.name === process.env.NAME_ADMIN) { %>
-              <button class="openModalBtnTitle">Modifier</button>
+              <button data-id="<%= arrays[a].id %>" class="openModalBtnTitle">Modifier</button>
             <% } %>
             <p><%= arrays[a].description %></p>
             <% if (user && user.name && user.name === process.env.NAME_ADMIN) { %>
@@ -71,7 +71,7 @@
             <% } %>
             <p>Prix: <%= arrays[a].price %> euros</p>
             <% if (user && user.name && user.name === process.env.NAME_ADMIN) { %>
-              <button class="openModalBtnPrice">Modifier</button>
+              <button data-id="<%= arrays[a].id %>" class="openModalBtnPrice">Modifier</button>
             <% } %>
           </div>
         </article>
