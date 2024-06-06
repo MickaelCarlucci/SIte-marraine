@@ -1,27 +1,62 @@
 const message = require("../dataMappers/messages");
 const painting = require("../dataMappers/paintings");
+const rateLimit = require('express-rate-limit');
+const axios = require('axios');
+
+const MAX_MESSAGES = 5;
+
+// Middleware to limit requests by IP
+const messageLimiter = rateLimit({
+  windowMs: 24 * 60 * 60 * 1000, // 24 heures
+  max: MAX_MESSAGES, // Limite pour chaque ip un envoie de 5 messages toute les 24h
+  handler: (request, response) => {
+    response.status(429).send("Vous avez atteint la limite d'envoi de messages.");
+  }
+});
+
+
+
 
 // Contrôleur pour les fonctionnalités administratives
 const adminController = {
 
   // Gère l'ajout d'un message par un utilisateur
-  admin: async (request, response) => {
+  admin: [messageLimiter, async (request, response) => {
     const formData = request.body;
+    const recaptchaToken = request.body['g-recaptcha-response'];
+
+    if (!recaptchaToken) {
+      return response.status(400).send('Captcha non vérifié');
+    }
+
+    const verificationUrl = `https://www.google.com/recaptcha/api/siteverify`;
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+
     try {
-      // Ajoute le message en utilisant le mapper de données
-      const count = await message.addMessageForArtist(formData);
-      // Redirige vers la page d'accueil si l'ajout est réussi
-      if (count === 1) {
-        response.redirect('/');
+      const verificationResponse = await axios.post(verificationUrl, null, {
+        params: {
+          secret: recaptchaSecret,
+          response: recaptchaToken
+        }
+      });
+
+      if (verificationResponse.data.success && verificationResponse.data.score >= 0.5) {
+        // Validation réussie
+        const count = await message.addMessageForArtist(formData);
+        if (count === 1) {
+          response.redirect('/');
+        } else {
+          response.status(500).send("Le message n'a pas pu être envoyé car le serveur ne répond pas");
+        }
       } else {
-        // En cas d'échec, renvoie une erreur 500
-        return response.status(500).send("Le message n'a pas pu être envoyé car le serveur ne répond pas");
+        response.status(400).send('Captcha non vérifié');
       }
     } catch (error) {
-      // Gère les erreurs en les affichant dans la console
       console.log(error);
+      response.status(500).send('Erreur lors de la vérification du captcha');
     }
-  },
+  }],
+
 
   //affiche la page admin
   adminHome: async (request, response) => {
