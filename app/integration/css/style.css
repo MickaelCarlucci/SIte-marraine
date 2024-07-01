@@ -92,19 +92,24 @@ article {
   box-shadow: 10px 5px 5px rgb(12, 1, 1);
   font-family: 'ephesis', serif;
 }
-
-
-
+.div_img_expo {
+  
+}
 .img__expo {
   /*pour le coté responsive*/
-  width: 25vw;
+  width: 35vw;
   /* Pour maintenir le ratio d'aspect */
-  height: 35%;
+  height: 30%;
   /* Pour éviter la déformation de l'image */
   object-fit: cover;
   /* ou "contain" selon vos besoins */
   margin: 5%;
-  box-shadow: 2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+
+.img__expo:hover {
+  transform: scale(1.05);
 }
 
 .img-left {
@@ -134,6 +139,7 @@ article {
   flex: 1;
   max-width: 20vw;
   box-sizing: border-box;
+  border: #000 solid 4px;
 }
 
 form {
