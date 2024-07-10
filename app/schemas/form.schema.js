@@ -42,7 +42,8 @@ const schema = Joi.object({
       'string.min': "Votre message doit comporter au moins 20 caractères.",
       'string.max': "Votre message ne doit pas dépasser 3000 caractères.",
       'any.required': "Votre message est requis."
-    })
+    }),
+  'g-recaptcha-response': Joi.string().required()
 });
 
 module.exports = schema;

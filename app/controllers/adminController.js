@@ -10,9 +10,10 @@ const messageLimiter = rateLimit({
   windowMs: 24 * 60 * 60 * 1000, // 24 heures
   max: MAX_MESSAGES, // Limite pour chaque ip un envoie de 5 messages toute les 24h
   handler: (request, response) => {
-    response.status(429).send("Vous avez atteint la limite d'envoi de messages.");
+    response.status(429).send("Vous avez atteint la limite d'envoi de messages pour 24h.");
   }
 });
+
 
 
 
@@ -21,15 +22,11 @@ const messageLimiter = rateLimit({
 const adminController = {
 
   // Gère l'ajout d'un message par un utilisateur
-  admin: [messageLimiter, async (request, response) => {
-    const formData = request.body;
-    const recaptchaToken = request.body['g-recaptcha-response'];
+  admin: [messageLimiter, async (req, res) => {
+    const formData = req.body;
 
-    if (!recaptchaToken) {
-      return response.status(400).send('Captcha non vérifié');
-    }
-
-    const verificationUrl = `https://www.google.com/recaptcha/api/siteverify`;
+    const recaptchaToken = formData['g-recaptcha-response'];
+    const verificationUrl = 'https://www.google.com/recaptcha/api/siteverify';
     const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
 
     try {
@@ -41,19 +38,18 @@ const adminController = {
       });
 
       if (verificationResponse.data.success && verificationResponse.data.score >= 0.5) {
-        // Validation réussie
         const count = await message.addMessageForArtist(formData);
         if (count === 1) {
-          response.redirect('/');
+          res.redirect('/');
         } else {
-          response.status(500).send("Le message n'a pas pu être envoyé car le serveur ne répond pas");
+          res.status(500).send('Le message n\'a pas pu être envoyé car le serveur ne répond pas');
         }
       } else {
-        response.status(400).send('Captcha non vérifié');
+        res.status(400).send('Captcha non vérifié');
       }
     } catch (error) {
       console.log(error);
-      response.status(500).send('Erreur lors de la vérification du captcha');
+      res.status(500).send('Erreur lors de la vérification du captcha');
     }
   }],
 
@@ -81,7 +77,6 @@ const adminController = {
     try {
       const id = Number(request.params.id);
       const oneMessage = await message.getOneMessage(id);
-      console.log(oneMessage.rows);
       response.render('adminMessage.ejs', {oneMessage: oneMessage.rows[0]});
     }catch(error) {
       console.log(error);
@@ -177,7 +172,6 @@ const adminController = {
       const id = Number(request.params.id);
       // On récupère le changement
       const {price} = request.body;
-      console.log(price);
       // met a jour la description dans la base de donnée
       await painting.updatePrice(price, id);
       // Redirige vers une page spécifique après la suppression
