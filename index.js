@@ -18,7 +18,9 @@ app.set('views','./app/views');
 app.use(requestIp.mw());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static('app/integration'));
+app.use(express.static('app/integration', {
+  maxAge: '30d' // 30 jours
+}));
 app.use(express.json());
 
 app.use(session({
